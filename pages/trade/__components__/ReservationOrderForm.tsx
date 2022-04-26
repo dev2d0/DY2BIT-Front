@@ -2,7 +2,6 @@ import type { FC } from 'react'
 import { useState, useEffect } from 'react'
 import styled from '@emotion/styled'
 import { useForm } from 'react-hook-form'
-import { useDispatch } from 'react-redux'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import { Button, css } from '@mui/material'
@@ -28,7 +27,6 @@ const createReservationOrderDataSchema = yup
   .required()
 
 export const ReservationOrderForm: FC = () => {
-  const dispatch = useDispatch()
   const [isBuy, setIsBuy] = useState<boolean | null>()
   const [getReservationOrderListTrigger, getReservationOrderListResult] = apiSlice.useLazyGetReservationOrderListQuery()
   const [createReservationOrderTrigger, createReservationOrderResult] = apiSlice.useLazyCreateReservationOrderQuery()
