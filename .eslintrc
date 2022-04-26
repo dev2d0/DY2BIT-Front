@@ -36,6 +36,11 @@
     "react/no-unused-prop-types": "off",
     "no-shadow": "off",
     "react/jsx-props-no-spreading": "off",
-    "no-param-reassign": [2, { "props": false }]
+    "no-param-reassign": [2, { "props": false }],
+    "no-restricted-globals": "off",
+    "no-useless-return": "off",
+    "no-useless-constructor": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "import/no-extraneous-dependencies": 0
   }
 }
