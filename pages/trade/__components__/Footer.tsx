@@ -6,23 +6,6 @@ import EmailIcon from '@mui/icons-material/Email'
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks'
 
 export const Footer: FC = () => {
-  const openUrl = (type: string) => {
-    switch (type) {
-      case 'github':
-        window.open('https://github.com/dev2d0')
-        break
-      case 'linkedin':
-        window.open('www.linkedin.com/in/이동영-dev2d0')
-        break
-      case 'blog':
-        window.open('https://movezero.tistory.com/')
-        break
-      default:
-        window.open('https://github.com/dev2d0')
-        break
-    }
-  }
-
   return (
     <FooterWrapper>
       <FooterTitle>Dy2Bit</FooterTitle>
