@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "dev-local": "env-cmd -f ./environments/.env.local next dev",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -16,18 +17,27 @@
     "@mui/material": "^5.6.2",
     "@mui/x-data-grid": "^5.9.0",
     "@reduxjs/toolkit": "^1.8.1",
+    "@types/js-cookie": "^3.0.2",
+    "js-cookie": "^3.0.1",
     "next": "12.1.5",
     "next-redux-wrapper": "^7.0.5",
+    "next-transpile-modules": "^9.0.0",
     "react": "18.0.0",
     "react-dom": "18.0.0",
-    "react-redux": "^8.0.1"
+    "react-redux": "^8.0.1",
+    "redux": "^4.2.0"
   },
   "devDependencies": {
+    "@hookform/resolvers": "^2.8.8",
+    "@types/luxon": "^2.3.1",
     "@types/node": "17.0.24",
     "@types/react": "18.0.5",
     "@types/react-dom": "18.0.1",
+    "@types/react-redux": "^7.1.24",
+    "@types/yup": "^0.29.13",
     "@typescript-eslint/eslint-plugin": "^5.20.0",
     "@typescript-eslint/parser": "^5.20.0",
+    "env-cmd": "^10.1.0",
     "eslint": "^8.14.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.5.0",
@@ -36,7 +46,10 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.4.0",
+    "luxon": "^2.3.2",
     "prettier": "^2.6.2",
-    "typescript": "4.3.4"
+    "react-hook-form": "^7.30.0",
+    "typescript": "4.3.4",
+    "yup": "^0.32.11"
   }
 }
