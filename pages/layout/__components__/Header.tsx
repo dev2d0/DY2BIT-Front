@@ -8,38 +8,51 @@ import HistoryIcon from '@mui/icons-material/History'
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange'
 import LoginIcon from '@mui/icons-material/Login'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
+import AccessibilityNewIcon from '@mui/icons-material/AccessibilityNew'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import Divider from '@mui/material/Divider'
+import { useRouter } from 'next/router'
 
 export const Header: FC = () => {
+  const router = useRouter()
   const [toggle, setToggle] = useState(false)
 
   const showMenu = () => {
     setToggle(!toggle)
   }
 
+  const onClickMenu = (path: string) => {
+    router.push(path)
+  }
+
   const menuList = () => (
     <Box sx={{ width: 250, height: '100%' }}>
       <List>
-        <ListItem button>
+        <ListItem button onClick={() => onClickMenu('trade')}>
           <ListItemIcon>
             <CurrencyExchangeIcon />
           </ListItemIcon>
           <ListItemText primary="Trade" />
         </ListItem>
-        <ListItem button>
+        <ListItem button onClick={() => onClickMenu('history')}>
           <ListItemIcon>
             <HistoryIcon />
           </ListItemIcon>
           <ListItemText primary="History" />
         </ListItem>
+        <ListItem button onClick={() => onClickMenu('introduce')}>
+          <ListItemIcon>
+            <AccessibilityNewIcon />
+          </ListItemIcon>
+          <ListItemText primary="Introduce" />
+        </ListItem>
       </List>
       <Divider />
       <List>
-        <ListItem button>
+        <ListItem button onClick={() => onClickMenu('login')}>
           <ListItemIcon>
             <LoginIcon />
           </ListItemIcon>
@@ -62,7 +75,7 @@ export const Header: FC = () => {
         {menuList()}
       </Drawer>
       <HeaderWrapper>
-        <MenuIcon onClick={showMenu} fontSize="large" />
+        <MenuIconStyled onClick={showMenu} fontSize="large" />
       </HeaderWrapper>
     </>
   )
@@ -80,4 +93,8 @@ const Copyright = styled.div`
   text-align: center;
   margin-top: 25px;
   font-size: 11px;
+`
+
+const MenuIconStyled = styled(MenuIcon)`
+  color: #f9f9f9;
 `
