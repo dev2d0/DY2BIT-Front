@@ -1,6 +1,7 @@
 export interface CreateReservationOrderParams {
   targetKimpRate: number | null
   quantity: number | null
+  secretKey: string | null
   isBuy: boolean | null
 }
 
@@ -8,16 +9,17 @@ export interface UpdateReservationOrderParams {
   id: number
   targetKimpRate: number
   unCompletedQuantity: number
+  secretKey: string
 }
 
 export interface DeleteReservationOrderParams {
+  secretKey: string
   id: number
 }
 
 export interface UserAuthenticateParams {
   email: string
   password: string
-  doubleCheckAuthenticate: string
 }
 
 export interface UserAuthenticateResult {}
