@@ -5,7 +5,7 @@ import RefreshIcon from '@mui/icons-material/Refresh'
 import { useEffect } from 'react'
 import { apiSlice } from '../../api/api.slice'
 import { currentCoinPricesActions } from '../../../store/modules/current-price.slice'
-import { CurrentCoinPricesResult } from '../../types/types'
+import { CurrentCoinPricesResult } from '../../../lib/types/types'
 
 export const CurrentCoinPrices: FC = () => {
   const { data, error, isLoading } = apiSlice.useGetCurrentCoinPricesQuery({})

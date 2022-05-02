@@ -53,7 +53,7 @@ export const UserAccountList: FC = () => {
                 업비트
               </StyledTableCell>
               <StyledTableCell align="right">{`${
-                data?.upbitBuyAccountKRW?.toLocaleString('ko-KR') ?? '###'
+                data ? Math.round(data?.upbitBuyAccountKRW).toLocaleString('ko-KR') : '###'
               }원`}</StyledTableCell>
               <StyledTableCell align="right">{`${data?.upbitSellAccountBTC ?? '###'}BTC`}</StyledTableCell>
             </StyledTableRow>

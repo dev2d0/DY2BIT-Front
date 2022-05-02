@@ -18,34 +18,13 @@ import {
   selectUpdateModalState,
 } from '../__modal__/__slices__/reservation-order-update.modal.slice'
 import { apiSlice } from '../../api/api.slice'
-import { getReservationOrderListResult } from '../../types/types'
+import { getReservationOrderListResult } from '../../../lib/types/types'
 
 export const ReservationOrderList: FC = () => {
   const dispatch = useDispatch()
   const [updateReservationOrder, setUpdateReservationOrder] = useState<getReservationOrderListResult>()
   const isModalShow = useSelector(selectUpdateModalState)
   const { data, error, isLoading } = apiSlice.useGetReservationOrderListQuery({})
-
-  const StyledTableCell = styled(TableCell)(({ theme }) => ({
-    [`&.${tableCellClasses.head}`]: {
-      backgroundColor: 'inherit',
-      color: '#ffffff',
-    },
-    [`&.${tableCellClasses.body}`]: {
-      backgroundColor: 'inherit',
-      color: '#ffffff',
-    },
-  }))
-
-  const StyledTableRow = styled(TableRow)(({ theme }) => ({
-    '&:nth-of-type(odd)': {
-      backgroundColor: 'inherit',
-    },
-    // hide last border
-    '&:last-child td, &:last-child th': {
-      border: 0,
-    },
-  }))
 
   const showUpdateModal = (id: number, target: getReservationOrderListResult) => {
     setUpdateReservationOrder(target)
@@ -59,8 +38,8 @@ export const ReservationOrderList: FC = () => {
           <TableHead>
             <TableRow>
               <StyledTableCell align="center">김프</StyledTableCell>
-              <StyledTableCell align="right">체결</StyledTableCell>
               <StyledTableCell align="right">미체결</StyledTableCell>
+              <StyledTableCell align="right">체결</StyledTableCell>
               <StyledTableCell align="right">포지션</StyledTableCell>
               <StyledTableCell align="right">생성일</StyledTableCell>
               <StyledTableCell align="center">수정</StyledTableCell>
@@ -124,3 +103,24 @@ const ReservationOrderListWrapper = styled.div`
     font-size: 0.775rem;
   }
 `
+
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  [`&.${tableCellClasses.head}`]: {
+    backgroundColor: 'inherit',
+    color: '#ffffff',
+  },
+  [`&.${tableCellClasses.body}`]: {
+    backgroundColor: 'inherit',
+    color: '#ffffff',
+  },
+}))
+
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+  '&:nth-of-type(odd)': {
+    backgroundColor: 'inherit',
+  },
+  // hide last border
+  '&:last-child td, &:last-child th': {
+    border: 0,
+  },
+}))

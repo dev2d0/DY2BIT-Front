@@ -83,6 +83,7 @@ export const BodyComponent = styled(DialogContent)<{ width: any }>`
     padding: 0px 20px;
     height: 100%;
     width: ${width};
+    max-width: 100%;
   `}
 `
 
