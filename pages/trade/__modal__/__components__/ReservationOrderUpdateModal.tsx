@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form'
 import { useEffect } from 'react'
 import { ModalView } from './ModalView'
 import { reservationOrderUpdateModalActions } from '../__slices__/reservation-order-update.modal.slice'
-import { getReservationOrderListResult, UpdateReservationOrderParams } from '../../../types/types'
+import { getReservationOrderListResult, UpdateReservationOrderParams } from '../../../../lib/types/types'
 import { apiSlice } from '../../../api/api.slice'
 import { ErrorMessageStyled } from '../../__components__/ReservationOrderForm'
 
@@ -24,6 +24,7 @@ const updateReservationOrderDataSchema = yup
       .min(0.001, '0.001이상의 값을 입력해주세요.')
       .max(1, '1 이하의 값을 입력해주새요.')
       .required('코인 주문 수량은 필수 값입니다.'),
+    secretKey: yup.string().required('Secret Key는 필수 값입니다.'),
   })
   .required()
 
@@ -52,18 +53,26 @@ export default function ReservationOrderUpdateModal(props: getReservationOrderLi
       id: props.id,
       targetKimpRate: getValues('targetKimpRate'),
       unCompletedQuantity: getValues('unCompletedQuantity'),
+      secretKey: getValues('secretKey'),
     })
   }
 
   const onDelete = () => {
     if (!confirm(`정말 예약된 주문을 취소하시겠습니까?`)) return
     deleteReservationOrderTrigger({
+      secretKey: getValues('secretKey'),
       id: props.id,
     })
   }
 
   useEffect(() => {
-    if (updateReservationOrderResult.status === 'fulfilled' || deleteReservationOrderResult.status === 'fulfilled') {
+    if (updateReservationOrderResult.status === 'rejected' || deleteReservationOrderResult.status === 'rejected') {
+      // @ts-ignore
+      alert(updateReservationOrderResult.error?.data.message ?? deleteReservationOrderResult.error?.data.message)
+    } else if (
+      updateReservationOrderResult.status === 'fulfilled' ||
+      deleteReservationOrderResult.status === 'fulfilled'
+    ) {
       getReservationOrderListTrigger({})
       onClose()
     }
@@ -97,6 +106,9 @@ export default function ReservationOrderUpdateModal(props: getReservationOrderLi
           {errors.unCompletedQuantity && <ErrorMessageStyled>{errors.unCompletedQuantity?.message}</ErrorMessageStyled>}
           <Label>체결량(변경 불가)</Label>
           <ShowValueContainer>{props.completedQuantity}</ShowValueContainer>
+          <Label>Secret Key</Label>
+          <Input {...register('secretKey')} placeholder="Secret key를 입력해주세요" />
+          {errors.secretKey && <ErrorMessageStyled>{errors.secretKey?.message}</ErrorMessageStyled>}
         </RowAlignFullScreenStyled>
       </form>
     </ModalView>

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction, createSelector } from '@reduxjs/toolkit'
-import { CurrentCoinPricesResult } from '../../pages/types/types'
+import { CurrentCoinPricesResult } from '../../lib/types/types'
 import { RootState } from '../store'
 
 // 초기 상태 타입

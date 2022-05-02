@@ -6,7 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import { Button, css } from '@mui/material'
 import { apiSlice } from '../../api/api.slice'
-import { CreateReservationOrderParams } from '../../types/types'
+import { CreateReservationOrderParams } from '../../../lib/types/types'
 
 const createReservationOrderDataSchema = yup
   .object({
@@ -22,7 +22,8 @@ const createReservationOrderDataSchema = yup
       .min(0.001, '0.001이상의 값을 입력해주세요.')
       .max(1, '1 이하의 값을 입력해주새요.')
       .required('코인 주문 수량은 필수 값입니다.'),
-    isBuy: yup.boolean().required('매수 매도 여부는 필수 값입니다.'),
+    secretKey: yup.string().typeError('시크릿 키를 입력해 주세요.').required('Secret Key는 필수 값입니다.'),
+    isBuy: yup.boolean().typeError('매수 혹은 매도를 선택해주세요.').required('매수 매도 여부는 필수 값입니다.'),
   })
   .required()
 
@@ -40,7 +41,7 @@ export const ReservationOrderForm: FC = () => {
     setIsBuy(isBuy)
   }
 
-  const reserveTrade = () => {
+  const reserveTrade = async () => {
     if (
       !confirm(
         `${getValues('targetKimpRate')}%, ${getValues('quantity')}BTC, ${isBuy ? '매수' : '매도'}주문을 하시겠습니까?`
@@ -52,6 +53,7 @@ export const ReservationOrderForm: FC = () => {
     createReservationOrderTrigger({
       targetKimpRate: getValues('targetKimpRate'),
       quantity: getValues('quantity'),
+      secretKey: getValues('secretKey'),
       isBuy: isBuy ?? false,
     })
     resetDate()
@@ -61,13 +63,19 @@ export const ReservationOrderForm: FC = () => {
     reset({
       targetKimpRate: null,
       quantity: null,
+      secretKey: null,
       isBuy: null,
     })
     setIsBuy(null)
   }
 
   useEffect(() => {
-    getReservationOrderListTrigger({})
+    if (createReservationOrderResult.status === 'rejected') {
+      // @ts-ignore
+      alert(createReservationOrderResult.error?.data.message)
+    } else {
+      getReservationOrderListTrigger({})
+    }
   }, [createReservationOrderResult])
 
   return (
@@ -83,6 +91,9 @@ export const ReservationOrderForm: FC = () => {
       <Label>주문 수량(BTC)</Label>
       <Input type="number" {...register('quantity')} placeholder="주문 수량을 입력해주세요. (ex 1.5 BTC)" step="0.1" />
       {errors.quantity && <ErrorMessageStyled>{errors.quantity?.message}</ErrorMessageStyled>}
+      <Label>Secret Key</Label>
+      <Input {...register('secretKey')} placeholder="Secret key를 입력해주세요" />
+      {errors.secretKey && <ErrorMessageStyled>{errors.secretKey?.message}</ErrorMessageStyled>}
       <SelectPositionButton
         type="button"
         marginRight={3}
