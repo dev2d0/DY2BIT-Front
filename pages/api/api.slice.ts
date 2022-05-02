@@ -2,18 +2,21 @@ import Cookies from 'js-cookie'
 import { BaseQueryFn, createApi, FetchArgs, fetchBaseQuery, FetchBaseQueryError } from '@reduxjs/toolkit/query/react'
 import router from 'next/router'
 import { ACCESS_TOKEN_KEY } from './contants'
-import { pageConfig } from '../../lib/router/config'
 import { getRuntimeConfig } from '../../lib/utils/runtimeConfig'
 import {
   CreateReservationOrderParams,
   CurrentCoinPricesResult,
   DeleteReservationOrderParams,
+  getHistoryReservationOrderListResult,
+  getDailyKimpListResult,
   getReservationOrderListResult,
   UpdateReservationOrderParams,
   UserAccountResults,
   UserAuthenticateParams,
   UserAuthenticateResult,
-} from '../types/types'
+  deleteHistoryReservationOrderParams,
+} from '../../lib/types/types'
+import { pageConfig } from '../../lib/router/config'
 
 const baseUrl = getRuntimeConfig().HOST
 
@@ -27,7 +30,7 @@ const baseQuery = fetchBaseQuery({
     const additionalHeaders = {
       accept: 'application/json',
       'content-type': 'application/json',
-      ...(accessToken !== undefined && { Authorization: `Bearer ${accessToken}` }),
+      ...(accessToken !== undefined && { Authorization: `${accessToken}` }),
     }
 
     Object.entries(additionalHeaders).forEach(([key, value]) => {
@@ -47,10 +50,10 @@ export const baseQueryWithReAuth: BaseQueryFn<string | FetchArgs, unknown, Fetch
 ) => {
   const result = await baseQuery(args, api, extraOptions)
 
-  // if (result.error && result.error.status === 401) {
-  //   Cookies.remove(ACCESS_TOKEN_KEY)
-  //   router.push(pageConfig.login.props.build())
-  // }
+  if (result.error && (result.error.status === 401 || result.error.status === 403)) {
+    Cookies.remove(ACCESS_TOKEN_KEY)
+    await router.push(pageConfig.login.props.build())
+  }
   return result
 }
 
@@ -64,7 +67,7 @@ export const apiSlice = createApi({
         query(body) {
           return {
             body,
-            url: `/logIn`,
+            url: `/login`,
             method: METHOD_TYPE,
           }
         },
@@ -90,19 +93,12 @@ export const apiSlice = createApi({
           return false
         },
       }),
-      getUserStatus: builder.query<any, any>({
-        query: body => ({
-          method: METHOD_TYPE,
-          url: `/u/GetUserStatus`,
-        }),
-        keepUnusedDataFor: 60,
-      }),
       getReservationOrderList: builder.query<getReservationOrderListResult[], any>({
         query(body) {
           return {
             body,
             method: METHOD_TYPE,
-            url: `/reservationOrders/getReservationOrderList`,
+            url: `api/reservationOrders/getReservationOrderList`,
           }
         },
         transformResponse: (response: any) => response,
@@ -112,7 +108,7 @@ export const apiSlice = createApi({
           return {
             body,
             method: METHOD_TYPE,
-            url: `/reservationOrders/currentCoinPrices`,
+            url: `api/reservationOrders/currentCoinPrices`,
           }
         },
         transformResponse: (response: CurrentCoinPricesResult) => response,
@@ -122,7 +118,7 @@ export const apiSlice = createApi({
           return {
             body,
             method: METHOD_TYPE,
-            url: `/reservationOrders/getUserAccount`,
+            url: `api/reservationOrders/getUserAccount`,
           }
         },
         transformResponse: (response: UserAccountResults) => response,
@@ -132,7 +128,7 @@ export const apiSlice = createApi({
           return {
             body,
             method: METHOD_TYPE,
-            url: `/reservationOrders/createReservationOrder`,
+            url: `api/reservationOrders/createReservationOrder`,
           }
         },
         transformResponse({ result }, meta) {
@@ -143,7 +139,7 @@ export const apiSlice = createApi({
         query: body => ({
           body,
           method: METHOD_TYPE,
-          url: `/reservationOrders/updateReservationOrder`,
+          url: `api/reservationOrders/updateReservationOrder`,
         }),
         transformResponse({ result }, meta) {
           return result
@@ -153,11 +149,43 @@ export const apiSlice = createApi({
         query: body => ({
           body,
           method: METHOD_TYPE,
-          url: `/reservationOrders/deleteReservationOrder`,
+          url: `api/reservationOrders/deleteReservationOrder`,
         }),
         transformResponse({ result }, meta) {
           return result
         },
+      }),
+      getHistoryReservationOrderList: builder.query<getHistoryReservationOrderListResult[], any>({
+        query(body) {
+          return {
+            body,
+            method: METHOD_TYPE,
+            url: `api/reservationOrders/getHistoryReservationOrderList`,
+          }
+        },
+        transformResponse: (response: any) => response,
+      }),
+      deleteHistoryReservationOrder: builder.query<boolean, deleteHistoryReservationOrderParams>({
+        query(body) {
+          return {
+            body,
+            method: METHOD_TYPE,
+            url: `api/reservationOrders/deleteHistoryReservationOrder`,
+          }
+        },
+        transformResponse({ result }, meta) {
+          return result
+        },
+      }),
+      getDailyKimpList: builder.query<getDailyKimpListResult[], any>({
+        query(body) {
+          return {
+            body,
+            method: METHOD_TYPE,
+            url: `api/reservationOrders/getDailyKimpList`,
+          }
+        },
+        transformResponse: (response: any) => response,
       }),
     }
   },

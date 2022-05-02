@@ -14,7 +14,7 @@ export function getRuntimeConfig(): RuntimeConfig {
   }
   // FIXME: 실제 사용할 value 로 수정
   return {
-    HOST: 'http://localhost:8080/api',
+    HOST: 'http://localhost:8080/',
     PRODUCTION: 'false',
     IS_TEST_ENV: 'true',
   }
