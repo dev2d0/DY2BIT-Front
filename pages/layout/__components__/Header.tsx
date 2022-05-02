@@ -12,11 +12,12 @@ import AccessibilityNewIcon from '@mui/icons-material/AccessibilityNew'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemIcon from '@mui/material/ListItemIcon'
+import EventRepeatIcon from '@mui/icons-material/EventRepeat'
 import ListItemText from '@mui/material/ListItemText'
 import Divider from '@mui/material/Divider'
 import { useRouter } from 'next/router'
 
-export const Header: FC = () => {
+export default function Header() {
   const router = useRouter()
   const [toggle, setToggle] = useState(false)
 
@@ -42,6 +43,12 @@ export const Header: FC = () => {
             <HistoryIcon />
           </ListItemIcon>
           <ListItemText primary="History" />
+        </ListItem>
+        <ListItem button onClick={() => onClickMenu('daily-kimp')}>
+          <ListItemIcon>
+            <EventRepeatIcon />
+          </ListItemIcon>
+          <ListItemText primary="DailyKimp" />
         </ListItem>
         <ListItem button onClick={() => onClickMenu('introduce')}>
           <ListItemIcon>
