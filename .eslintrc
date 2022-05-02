@@ -41,6 +41,8 @@
     "no-useless-return": "off",
     "no-useless-constructor": "off",
     "@typescript-eslint/no-var-requires": "off",
-    "import/no-extraneous-dependencies": 0
+    "import/no-extraneous-dependencies": 0,
+    "@typescript-eslint/no-empty-interface": "off",
+    "@typescript-eslint/ban-ts-comment": "off"
   }
 }
