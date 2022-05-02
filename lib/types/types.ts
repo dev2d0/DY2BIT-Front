@@ -35,6 +35,29 @@ export interface getReservationOrderListResult {
   endAt?: number
 }
 
+export interface getHistoryReservationOrderListResult {
+  id: number
+  coinName: string
+  completedQuantity: number
+  position: boolean
+  targetKimpRate: number
+  createdAt: number
+  endAt: number
+}
+
+export interface deleteHistoryReservationOrderParams {
+  id: number
+}
+
+export interface getDailyKimpListResult {
+  id: number
+  minRate: number
+  minRateAt: number
+  maxRate: number
+  maxRateAt: number
+  createdAt: number
+}
+
 export interface CurrentCoinPricesResult {
   kimpPer: number
   upbitPrice: number
