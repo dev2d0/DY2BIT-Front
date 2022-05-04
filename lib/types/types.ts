@@ -72,3 +72,11 @@ export interface UserAccountResults {
   binanceSellAccountBTC: number
   binanceLeverage: number
 }
+
+export interface ErrorReportResult {
+  id: number
+  errorTarget: string | null
+  errorMessage: string | null
+  errorFoundedAt: number | null
+  createdAt: number
+}

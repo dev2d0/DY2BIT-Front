@@ -15,6 +15,7 @@ import {
   UserAuthenticateParams,
   UserAuthenticateResult,
   deleteHistoryReservationOrderParams,
+  ErrorReportResult,
 } from '../../lib/types/types'
 import { pageConfig } from '../../lib/router/config'
 
@@ -186,6 +187,26 @@ export const apiSlice = createApi({
           }
         },
         transformResponse: (response: any) => response,
+      }),
+      getErrorReport: builder.query<ErrorReportResult, any>({
+        query(body) {
+          return {
+            body,
+            method: METHOD_TYPE,
+            url: `api/reservationOrders/getErrorReport`,
+          }
+        },
+        transformResponse: (response: ErrorReportResult) => response,
+      }),
+      confirmErrorReport: builder.query<ErrorReportResult, any>({
+        query(body) {
+          return {
+            body,
+            method: METHOD_TYPE,
+            url: `api/reservationOrders/confirmErrorReport`,
+          }
+        },
+        transformResponse: (response: ErrorReportResult) => response,
       }),
     }
   },

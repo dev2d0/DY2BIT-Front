@@ -6,6 +6,7 @@ import { useEffect } from 'react'
 import { apiSlice } from '../../api/api.slice'
 import { currentCoinPricesActions } from '../../../store/modules/current-price.slice'
 import { CurrentCoinPricesResult } from '../../../lib/types/types'
+import { ErrorReport } from './ErrorReport'
 
 export const CurrentCoinPrices: FC = () => {
   const { data, error, isLoading } = apiSlice.useGetCurrentCoinPricesQuery({})
@@ -28,6 +29,7 @@ export const CurrentCoinPrices: FC = () => {
   return (
     <CurrentPriceWrapper>
       <Title>DY2BIT KimpTrade</Title>
+      <ErrorReport />
       <CurrentPriceContainer>
         <CurrentPriceFont>현재 김프: {data?.kimpPer ?? '###'}%</CurrentPriceFont>
       </CurrentPriceContainer>
