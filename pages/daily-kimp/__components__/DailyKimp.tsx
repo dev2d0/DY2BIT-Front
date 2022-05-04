@@ -32,11 +32,11 @@ export default function DailyKimp() {
                   {row.minRate}
                 </StyledTableCell>
                 <StyledTableCell align="right">
-                  {DateTime.fromJSDate(new Date(Number(row.minRateAt))).toFormat('MM.dd')}
+                  {DateTime.fromJSDate(new Date(Number(row.minRateAt))).toFormat('MM.dd:hh.mm')}
                 </StyledTableCell>
                 <StyledTableCell align="right">{row.maxRate}</StyledTableCell>
                 <StyledTableCell align="right">
-                  {DateTime.fromJSDate(new Date(Number(row.maxRateAt))).toFormat('MM.dd')}
+                  {DateTime.fromJSDate(new Date(Number(row.maxRateAt))).toFormat('MM.dd:hh.mm')}
                 </StyledTableCell>
                 <StyledTableCell align="right">
                   {DateTime.fromJSDate(new Date(Number(row.createdAt))).toFormat('MM.dd')}
