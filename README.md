@@ -1,11 +1,10 @@
 # DY2BIT_Front
-<img width="294" alt="image" src="https://user-images.githubusercontent.com/39155520/166860574-d1227cd7-39b5-4d12-a231-4ea38ab1ad7f.png">
+<figure class="fourth">
 <img width="300" alt="image" src="https://user-images.githubusercontent.com/39155520/166860600-d2812b6b-2121-4dad-a202-6207aeb36bb5.png">
+<img width="294" alt="image" src="https://user-images.githubusercontent.com/39155520/166860574-d1227cd7-39b5-4d12-a231-4ea38ab1ad7f.png">
 <img width="297" alt="image" src="https://user-images.githubusercontent.com/39155520/166860639-f30d85ef-6589-4fe4-b963-7a05a167f4d1.png">
 <img width="294" alt="image" src="https://user-images.githubusercontent.com/39155520/166860676-1c78ea1b-54f4-440c-90bf-9953240363e4.png">
-
-
-
+</ figure>
 
 ## 프론트 기획 스펙
 ### 0. 현재 가격 정보
@@ -28,10 +27,9 @@
 - 여러 예약 주문의 목표가에 동시에 도달시에는 가장 가장 오래전에 만들어진 주문을 기준으로 처리함.(동시 처리X)
 - 주문 오류가 발생하면 더이상 거래가 이루어지지 않도록 해야함.
 
-## 기술적 고려 사항
-- 호출하는 API가 많아 비동기 처리 신경쓰기 (Coroutine)
-- 3초~5초마다 DB에 접근하므로 Latancy를 줄여줘야함 (Redis)
-- API의 장애를 생각해서 예외처리 잘 해주기
+## 추가 스펙
+- PWA 구현
+- 모바일로 웹앱 구현
 
 ## 기술스택
 - Next.js
