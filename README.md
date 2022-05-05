@@ -1,5 +1,11 @@
 # DY2BIT_Front
-<img width="346" alt="image" src="https://user-images.githubusercontent.com/39155520/166859479-6869402e-a127-4c25-a718-7e8dfff90620.png">
+<img width="294" alt="image" src="https://user-images.githubusercontent.com/39155520/166860574-d1227cd7-39b5-4d12-a231-4ea38ab1ad7f.png">
+<img width="300" alt="image" src="https://user-images.githubusercontent.com/39155520/166860600-d2812b6b-2121-4dad-a202-6207aeb36bb5.png">
+<img width="297" alt="image" src="https://user-images.githubusercontent.com/39155520/166860639-f30d85ef-6589-4fe4-b963-7a05a167f4d1.png">
+<img width="294" alt="image" src="https://user-images.githubusercontent.com/39155520/166860676-1c78ea1b-54f4-440c-90bf-9953240363e4.png">
+
+
+
 
 ## 프론트 기획 스펙
 ### 0. 현재 가격 정보
