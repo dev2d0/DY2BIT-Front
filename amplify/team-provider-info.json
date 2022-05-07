@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-dy2bit-dev-234858-authRole",
+      "UnauthRoleArn": "arn:aws:iam::143902724616:role/amplify-dy2bit-dev-234858-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::143902724616:role/amplify-dy2bit-dev-234858-authRole",
+      "Region": "ap-northeast-2",
+      "DeploymentBucketName": "amplify-dy2bit-dev-234858-deployment",
+      "UnauthRoleName": "amplify-dy2bit-dev-234858-unauthRole",
+      "StackName": "amplify-dy2bit-dev-234858",
+      "StackId": "arn:aws:cloudformation:ap-northeast-2:143902724616:stack/amplify-dy2bit-dev-234858/d4391020-ce14-11ec-a5c1-0a016dfd6038",
+      "AmplifyAppId": "d9zezi4jl3w1m"
+    }
+  }
+}
