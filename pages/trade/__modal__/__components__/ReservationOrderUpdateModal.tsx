@@ -8,7 +8,6 @@ import { ModalView } from './ModalView'
 import { reservationOrderUpdateModalActions } from '../__slices__/reservation-order-update.modal.slice'
 import { getReservationOrderListResult, UpdateReservationOrderParams } from '../../../../lib/types/types'
 import { apiSlice } from '../../../api/api.slice'
-import { ErrorMessageStyled } from '../../__components__/ReservationOrderForm'
 
 const updateReservationOrderDataSchema = yup
   .object({
@@ -158,4 +157,11 @@ const Label = styled.p`
   font-weight: bold;
   margin: 0;
   padding-top: 20px;
+`
+
+const ErrorMessageStyled = styled.span`
+  display: block;
+  color: red;
+  font-size: 12px;
+  left: 0;
 `
