@@ -4,7 +4,7 @@ import ReservationOrderList from './__components__/ReservationOrderList'
 import Footer from './__components__/Footer'
 import CurrentCoinPrices from './__components__/CurrentCoinPrices'
 import UserAccountList from './__components__/UserAccountList'
-import { PageView } from '../layout/__components__/PageView'
+import PageView from '../layout/__components__/PageView'
 
 export default function Trade() {
   return (

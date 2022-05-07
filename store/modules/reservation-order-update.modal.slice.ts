@@ -1,5 +1,5 @@
 import { createSelector, createSlice } from '@reduxjs/toolkit'
-import { RootState } from '../../../../store/store'
+import { RootState } from '../store'
 
 interface IState {
   updateModalIsShow: boolean
@@ -24,7 +24,7 @@ const slice = createSlice({
   },
 })
 
-const state = (state: RootState): IState => state.modal.reservationOrderUpdateModal
+const state = (state: RootState): IState => state.reservationOrderUpdateModal
 
 // action creator
 export const reservationOrderUpdateModalActions = slice.actions

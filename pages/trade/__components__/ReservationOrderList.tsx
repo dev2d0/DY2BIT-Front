@@ -15,7 +15,7 @@ import ReservationOrderUpdateModal from '../__modal__/__components__/Reservation
 import {
   reservationOrderUpdateModalActions,
   selectUpdateModalState,
-} from '../__modal__/__slices__/reservation-order-update.modal.slice'
+} from '../../../store/modules/reservation-order-update.modal.slice'
 import { apiSlice } from '../../api/api.slice'
 import { getReservationOrderListResult } from '../../../lib/types/types'
 

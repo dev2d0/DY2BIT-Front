@@ -13,7 +13,7 @@ interface IModalView {
   children?: React.ReactNode
 }
 
-export const ModalView: FC<IModalView> = props => {
+const ModalView: FC<IModalView> = props => {
   const onSave = () => {
     props.onSave()
   }
@@ -42,6 +42,8 @@ export const ModalView: FC<IModalView> = props => {
     </ModalComponent>
   )
 }
+
+export default ModalView
 
 export const ModalComponent = styled(Dialog)`
   .css-1t1j96h-MuiPaper-root-MuiDialog-paper {

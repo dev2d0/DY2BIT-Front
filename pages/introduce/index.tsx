@@ -1,5 +1,5 @@
 import React from 'react'
-import { PageView } from '../layout/__components__/PageView'
+import PageView from '../layout/__components__/PageView'
 
 export default function Introduce() {
   return (

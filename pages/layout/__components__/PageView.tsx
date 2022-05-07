@@ -6,7 +6,7 @@ interface IPageView {
   children?: ReactNode
 }
 
-export const PageView: FC<IPageView> = props => {
+const PageView: FC<IPageView> = props => {
   return (
     <BackgroundWrapper>
       <PageWrapper>
@@ -16,6 +16,8 @@ export const PageView: FC<IPageView> = props => {
     </BackgroundWrapper>
   )
 }
+
+export default PageView
 
 const BackgroundWrapper = styled.div`
   background: linear-gradient(180deg, #000 0%, #19254c 100%);
