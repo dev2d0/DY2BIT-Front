@@ -1,7 +1,7 @@
 import type { FC } from 'react'
 import styled from '@emotion/styled'
-import GithubIcon from '@mui/icons-material/Github'
 import LinkedinIcon from '@mui/icons-material/LinkedIn'
+import GitHubIcon from '@mui/icons-material/GitHub'
 import EmailIcon from '@mui/icons-material/Email'
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks'
 
@@ -15,7 +15,7 @@ export const Footer: FC = () => {
       </Description>
       <IconWrapper>
         <a href="https://github.com/dev2d0" target="_blank" rel="noreferrer">
-          <GithubIcon /> <IconText>Github</IconText>
+          <GitHubIcon /> <IconText>Github</IconText>
         </a>
       </IconWrapper>
       <IconWrapper>
