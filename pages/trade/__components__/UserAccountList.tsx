@@ -1,4 +1,3 @@
-import type { FC } from 'react'
 import styled from '@emotion/styled'
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
@@ -11,7 +10,7 @@ import { useSelector } from 'react-redux'
 import { apiSlice } from '../../api/api.slice'
 import { selectExchangeRatePriceState } from '../../../store/modules/current-price.slice'
 
-export const UserAccountList: FC = () => {
+export default function UserAccountList() {
   const { data, error, isLoading } = apiSlice.useGetUserAccountQuery({})
   const exchangeRatePrice = useSelector(selectExchangeRatePriceState)
 

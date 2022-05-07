@@ -1,11 +1,10 @@
-import type { FC } from 'react'
 import styled from '@emotion/styled'
 import LinkedinIcon from '@mui/icons-material/LinkedIn'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import EmailIcon from '@mui/icons-material/Email'
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks'
 
-export const Footer: FC = () => {
+export default function Footer() {
   return (
     <FooterWrapper>
       <FooterTitle>Dy2Bit</FooterTitle>

@@ -1,4 +1,3 @@
-import type { FC } from 'react'
 import styled from '@emotion/styled'
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
@@ -20,7 +19,7 @@ import {
 import { apiSlice } from '../../api/api.slice'
 import { getReservationOrderListResult } from '../../../lib/types/types'
 
-export const ReservationOrderList: FC = () => {
+export default function ReservationOrderList() {
   const dispatch = useDispatch()
   const [updateReservationOrder, setUpdateReservationOrder] = useState<getReservationOrderListResult>()
   const isModalShow = useSelector(selectUpdateModalState)

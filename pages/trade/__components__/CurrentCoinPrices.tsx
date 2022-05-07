@@ -1,4 +1,3 @@
-import type { FC } from 'react'
 import styled from '@emotion/styled'
 import { useDispatch } from 'react-redux'
 import RefreshIcon from '@mui/icons-material/Refresh'
@@ -6,9 +5,9 @@ import { useEffect } from 'react'
 import { apiSlice } from '../../api/api.slice'
 import { currentCoinPricesActions } from '../../../store/modules/current-price.slice'
 import { CurrentCoinPricesResult } from '../../../lib/types/types'
-import { ErrorReport } from './ErrorReport'
+import ErrorReport from './ErrorReport'
 
-export const CurrentCoinPrices: FC = () => {
+export default function CurrentCoinPrices() {
   const { data, error, isLoading } = apiSlice.useGetCurrentCoinPricesQuery({})
   const [getCurrentCoinPricesTrigger, getCurrentCoinPricesResult] = apiSlice.useLazyGetCurrentCoinPricesQuery()
   const dispatch = useDispatch()

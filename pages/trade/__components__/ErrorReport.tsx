@@ -1,11 +1,10 @@
-import type { FC } from 'react'
 import styled from '@emotion/styled'
 import { DateTime } from 'luxon'
 import { Button } from '@mui/material'
 import { useEffect } from 'react'
 import { apiSlice } from '../../api/api.slice'
 
-export const ErrorReport: FC = () => {
+export default function ErrorReport() {
   const { data, error, isLoading } = apiSlice.useGetErrorReportQuery({})
   const [getErrorReportTrigger, getErrorReportResult] = apiSlice.useLazyGetErrorReportQuery({})
   const [confirmErrorReportTrigger, confirmErrorReportResult] = apiSlice.useLazyConfirmErrorReportQuery()

@@ -1,4 +1,3 @@
-import type { FC } from 'react'
 import { useState, useEffect } from 'react'
 import styled from '@emotion/styled'
 import { useForm } from 'react-hook-form'
@@ -27,7 +26,7 @@ const createReservationOrderDataSchema = yup
   })
   .required()
 
-export const ReservationOrderForm: FC = () => {
+export default function ReservationOrderForm() {
   const [isBuy, setIsBuy] = useState<boolean | null>()
   const [getReservationOrderListTrigger, getReservationOrderListResult] = apiSlice.useLazyGetReservationOrderListQuery()
   const [createReservationOrderTrigger, createReservationOrderResult] = apiSlice.useLazyCreateReservationOrderQuery()
