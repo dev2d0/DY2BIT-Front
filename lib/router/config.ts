@@ -13,4 +13,8 @@ export const pageConfig = {
     build: () => '/login',
     pattern: '/login',
   }),
+  introduce: new PageConfigItem({
+    build: () => '/introduce',
+    pattern: '/introduce',
+  }),
 }
