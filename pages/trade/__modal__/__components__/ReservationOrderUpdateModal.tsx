@@ -78,13 +78,7 @@ export default function ReservationOrderUpdateModal(props: getReservationOrderLi
   }, [updateReservationOrderResult, deleteReservationOrderResult])
 
   return (
-    <ModalView
-      width="350px"
-      onSave={handleSubmit(onSave)}
-      onClose={onClose}
-      onDelete={onDelete}
-      title={() => <div>주문 수정하기</div>}
-    >
+    <ModalView width="350px" onSave={handleSubmit(onSave)} onClose={onClose} onDelete={onDelete} title="주문 수정하기">
       <form>
         <RowAlignFullScreenStyled>
           <Label>목표 김프가(%)</Label>

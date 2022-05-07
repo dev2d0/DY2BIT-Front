@@ -29,7 +29,7 @@ const ModalView: FC<IModalView> = props => {
   return (
     <ModalComponent onClose={onClose} open>
       <HeaderComponent>
-        <HeaderTitleComponent>{props.title()}</HeaderTitleComponent>
+        <HeaderTitleComponent>{props.title}</HeaderTitleComponent>
         <Button onClick={onClose}>
           <CloseIcon />
         </Button>
