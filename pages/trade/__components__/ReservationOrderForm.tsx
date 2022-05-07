@@ -190,7 +190,7 @@ const SelectPositionButton = styled.button<{
   `}
 `
 
-export const ErrorMessageStyled = styled.span`
+const ErrorMessageStyled = styled.span`
   display: block;
   color: red;
   font-size: 12px;
