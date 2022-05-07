@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { Login } from './__components__/Login'
+import Login from './__components__/Login'
 import { PageView } from '../layout/__components__/PageView'
 
 export default function LoginPage() {

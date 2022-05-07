@@ -17,7 +17,7 @@ const loginSchema = yup
   })
   .required()
 
-export const Login: VoidFunctionComponent = () => {
+export default function Login() {
   const router = useRouter()
   const dispatch = useDispatch()
   const inputRef = useRef<HTMLInputElement>(null)
