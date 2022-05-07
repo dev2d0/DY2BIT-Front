@@ -6,10 +6,6 @@ const nextConfig = {
   future: {
     webpack5: true,
   },
-  i18n: {
-    locales: ['en', 'ko'],
-    defaultLocale: 'ko',
-  },
   basePath,
   assetPrefix: process.env.ASSET_PREFIX,
   crossOrigin: 'anonymous', // CDN 사용할 때 CORS 헤더 없는 캐시 방지
