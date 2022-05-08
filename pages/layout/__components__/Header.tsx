@@ -14,7 +14,10 @@ import ListItemIcon from '@mui/material/ListItemIcon'
 import EventRepeatIcon from '@mui/icons-material/EventRepeat'
 import ListItemText from '@mui/material/ListItemText'
 import Divider from '@mui/material/Divider'
-import { useRouter } from 'next/router'
+import router, { useRouter } from 'next/router'
+import Cookies from 'js-cookie'
+import { ACCESS_TOKEN_KEY } from '../../api/contants'
+import { pageConfig } from '../../../lib/router/config'
 
 export default function Header() {
   const router = useRouter()
@@ -24,61 +27,106 @@ export default function Header() {
     setToggle(!toggle)
   }
 
+  const onLogout = () => {
+    Cookies.remove(ACCESS_TOKEN_KEY)
+    router.push(pageConfig.login.props.build())
+  }
+
   const onClickMenu = (path: string) => {
     router.push(path)
   }
 
-  const menuList = () => (
-    <Box sx={{ width: 250, height: '100%' }}>
-      <List>
-        <ListItem button onClick={() => onClickMenu('trade')}>
-          <ListItemIcon>
-            <CurrencyExchangeIcon />
-          </ListItemIcon>
-          <ListItemText primary="Trade" />
-        </ListItem>
-        <ListItem button onClick={() => onClickMenu('history')}>
-          <ListItemIcon>
-            <HistoryIcon />
-          </ListItemIcon>
-          <ListItemText primary="History" />
-        </ListItem>
-        <ListItem button onClick={() => onClickMenu('daily-kimp')}>
-          <ListItemIcon>
-            <EventRepeatIcon />
-          </ListItemIcon>
-          <ListItemText primary="DailyKimp" />
-        </ListItem>
-        <ListItem button onClick={() => onClickMenu('introduce')}>
-          <ListItemIcon>
-            <AccessibilityNewIcon />
-          </ListItemIcon>
-          <ListItemText primary="Introduce" />
-        </ListItem>
-      </List>
-      <Divider />
-      <List>
-        <ListItem button onClick={() => onClickMenu('login')}>
-          <ListItemIcon>
-            <LoginIcon />
-          </ListItemIcon>
-          <ListItemText primary="Login" />
-        </ListItem>
-        <ListItem button onClick={showMenu}>
-          <ListItemIcon>
-            <ArrowBackIcon />
-          </ListItemIcon>
-          <ListItemText primary="Close" />
-        </ListItem>
-      </List>
-      <Copyright>© {new Date().getFullYear()} Copyright dev2d0 all rights reserved.</Copyright>
-    </Box>
-  )
+  const IsLoggedInMenu = () => {
+    return (
+      <>
+        <List>
+          <ListItem button onClick={() => onClickMenu('trade')}>
+            <ListItemIcon>
+              <CurrencyExchangeIcon />
+            </ListItemIcon>
+            <ListItemText primary="Trade" />
+          </ListItem>
+          <ListItem button onClick={() => onClickMenu('history')}>
+            <ListItemIcon>
+              <HistoryIcon />
+            </ListItemIcon>
+            <ListItemText primary="History" />
+          </ListItem>
+          <ListItem button onClick={() => onClickMenu('daily-kimp')}>
+            <ListItemIcon>
+              <EventRepeatIcon />
+            </ListItemIcon>
+            <ListItemText primary="DailyKimp" />
+          </ListItem>
+          <ListItem button onClick={() => onClickMenu('introduce')}>
+            <ListItemIcon>
+              <AccessibilityNewIcon />
+            </ListItemIcon>
+            <ListItemText primary="Introduce" />
+          </ListItem>
+        </List>
+        <Divider />
+        <List>
+          <ListItem button onClick={onLogout}>
+            <ListItemIcon>
+              <LoginIcon />
+            </ListItemIcon>
+            <ListItemText primary="Logout" />
+          </ListItem>
+          <ListItem button onClick={showMenu}>
+            <ListItemIcon>
+              <ArrowBackIcon />
+            </ListItemIcon>
+            <ListItemText primary="Close" />
+          </ListItem>
+        </List>
+      </>
+    )
+  }
+
+  const IsLoggedOutMenu = () => {
+    return (
+      <>
+        <List>
+          <ListItem button onClick={() => onClickMenu('introduce')}>
+            <ListItemIcon>
+              <AccessibilityNewIcon />
+            </ListItemIcon>
+            <ListItemText primary="Introduce" />
+          </ListItem>
+        </List>
+        <Divider />
+        <List>
+          <ListItem button onClick={() => onClickMenu('login')}>
+            <ListItemIcon>
+              <LoginIcon />
+            </ListItemIcon>
+            <ListItemText primary="Login" />
+          </ListItem>
+          <ListItem button onClick={showMenu}>
+            <ListItemIcon>
+              <ArrowBackIcon />
+            </ListItemIcon>
+            <ListItemText primary="Close" />
+          </ListItem>
+        </List>
+      </>
+    )
+  }
+
+  const MenuList = () => {
+    return (
+      <Box sx={{ width: 250, height: '100%' }}>
+        {Cookies.get(ACCESS_TOKEN_KEY) != null ? <IsLoggedInMenu /> : <IsLoggedOutMenu />}
+        <Copyright>© {new Date().getFullYear()} Copyright dev2d0 all rights reserved.</Copyright>
+      </Box>
+    )
+  }
 
   return (
     <>
       <Drawer anchor="left" open={toggle} onClose={showMenu}>
-        {menuList()}
+        <MenuList />
       </Drawer>
       <HeaderWrapper>
         <MenuIconStyled onClick={showMenu} fontSize="large" />
@@ -89,7 +137,7 @@ export default function Header() {
 
 const HeaderWrapper = styled.div`
   width: 100%;
-  padding-top: 5px;
+  padding: 5px 0px 0px 5px;
 `
 
 const Copyright = styled.div`
