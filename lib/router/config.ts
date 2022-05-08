@@ -13,6 +13,10 @@ export const pageConfig = {
     build: () => '/login',
     pattern: '/login',
   }),
+  trade: new PageConfigItem({
+    build: () => '/trade',
+    pattern: '/trade',
+  }),
   introduce: new PageConfigItem({
     build: () => '/introduce',
     pattern: '/introduce',

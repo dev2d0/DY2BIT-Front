@@ -52,7 +52,7 @@ export default function Login() {
   const handleSubmitClick = async () => {
     try {
       await authenticate({ email: userInfo.email, password: userInfo.password }).unwrap()
-      await router.push(pageConfig.introduce.props.build())
+      await router.push(pageConfig.trade.props.build())
     } catch (e: any) {
       alert(`로그인 에러${e.data?.message}`)
     }
