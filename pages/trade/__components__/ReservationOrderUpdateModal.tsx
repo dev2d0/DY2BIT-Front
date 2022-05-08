@@ -4,10 +4,10 @@ import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 import { useEffect } from 'react'
-import ModalView from './ModalView'
-import { reservationOrderUpdateModalActions } from '../../../../store/modules/reservation-order-update.modal.slice'
-import { getReservationOrderListResult, UpdateReservationOrderParams } from '../../../../lib/types/types'
-import { apiSlice } from '../../../api/api.slice'
+import ModalView from '../../layout/__components__/ModalView'
+import { reservationOrderUpdateModalActions } from '../../../store/modules/reservation-order-update.modal.slice'
+import { getReservationOrderListResult, UpdateReservationOrderParams } from '../../../lib/types/types'
+import { apiSlice } from '../../api/api.slice'
 
 const updateReservationOrderDataSchema = yup
   .object({
