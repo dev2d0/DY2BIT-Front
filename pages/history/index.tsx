@@ -6,15 +6,7 @@ import History from './__components__/History'
 export default function HistoryPage() {
   return (
     <PageView>
-      <MainBackgroundWrapper>
-        <History />
-      </MainBackgroundWrapper>
+      <History />
     </PageView>
   )
 }
-
-const MainBackgroundWrapper = styled.div`
-  padding: 0 10px;
-  background: linear-gradient(180deg, #000 0%, #19254c 67.59%);
-  color: #f9f9f9;
-`
