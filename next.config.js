@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const basePath = ''
+const securityHeaders = []
 
 const nextConfig = {
   reactStrictMode: true,
@@ -15,6 +16,16 @@ const nextConfig = {
     USE_PROXY: process.env.USE_PROXY,
     IS_TEST_ENV: process.env.IS_TEST_ENV,
     SENTRY_DSN: process.env.SENTRY_DSN,
+  },
+
+  async headers() {
+    return [
+      {
+        // Apply these headers to all routes in your application.
+        source: '/:path*',
+        headers: securityHeaders,
+      },
+    ]
   },
 }
 
