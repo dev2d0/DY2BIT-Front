@@ -10,7 +10,7 @@ const Home: NextPage = () => {
     router.push(pageConfig.introduce.props.build())
   }, [])
 
-  return <>Home</>
+  return <div />
 }
 
 export default Home

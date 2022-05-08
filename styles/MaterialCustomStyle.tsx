@@ -7,6 +7,9 @@ export function MaterialCustomStyle() {
         .css-11xur9t-MuiPaper-root-MuiTableContainer-root {
           background-color: inherit !important;
         }
+        .css-13xy2my {
+          background-color: inherit !important;
+        }
       `}
     />
   )

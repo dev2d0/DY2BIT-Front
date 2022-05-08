@@ -84,19 +84,19 @@ const UserAccountListListWrapper = styled.div`
   margin: 20px 0px 0px 0px;
   .css-1d6liq9-MuiTableCell-root.MuiTableCell-head {
     padding: 13px;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
   }
   .css-17b28km-MuiTableCell-root.MuiTableCell-head {
     padding: 13px;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
   }
   .css-yvtl07-MuiTableCell-root.MuiTableCell-body {
     padding: 13px;
-    font-size: 0.8em;
+    font-size: 0.7em;
   }
   .css-15gzbgv-MuiTableCell-root.MuiTableCell-body {
     padding: 13px;
-    font-size: 0.8em;
+    font-size: 0.7em;
   }
 `
 

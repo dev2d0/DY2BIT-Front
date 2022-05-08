@@ -11,7 +11,7 @@ import { Portal } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
 import { DateTime } from 'luxon'
 import { useState } from 'react'
-import ReservationOrderUpdateModal from '../__modal__/__components__/ReservationOrderUpdateModal'
+import ReservationOrderUpdateModal from './ReservationOrderUpdateModal'
 import {
   reservationOrderUpdateModalActions,
   selectUpdateModalState,
