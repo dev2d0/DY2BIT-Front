@@ -99,22 +99,22 @@ const UserAccountListListWrapper = styled.div`
     font-size: 0.7em;
   }
   // 배포 버전
-  .css-1rp5ql8.MuiTableCell-head { {
+  .css-1rp5ql8.MuiTableCell-head {
     padding: 13px;
     font-size: 0.7em;
   }
-    .css-10jfj2g.MuiTableCell-head {
-      padding: 13px;
-      font-size: 0.7em;
-    }
-    .css-132l2wk.MuiTableCell-body {
-      padding: 13px;
-      font-size: 0.7em;
-    }
-    .css-1c7m334.MuiTableCell-body {
-      padding: 13px;
-      font-size: 0.7em;
-    }
+  .css-10jfj2g.MuiTableCell-head {
+    padding: 13px;
+    font-size: 0.7em;
+  }
+  .css-132l2wk.MuiTableCell-body {
+    padding: 13px;
+    font-size: 0.7em;
+  }
+  .css-1c7m334.MuiTableCell-body {
+    padding: 13px;
+    font-size: 0.7em;
+  }
 `
 
 const UsdtToWonDescription = styled.span`

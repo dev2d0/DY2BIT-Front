@@ -51,6 +51,11 @@ export const ModalComponent = styled(Dialog)`
     color: #bbbecb;
     border: 1px solid #333d56;
   }
+  .css-uhb5lp {
+    background-color: #090e1d;
+    color: #bbbecb;
+    border: 1px solid #333d56;
+  }
 
   width: 100%;
   height: 100%;
