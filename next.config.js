@@ -16,6 +16,9 @@ const nextConfig = {
     IS_TEST_ENV: process.env.IS_TEST_ENV,
     SENTRY_DSN: process.env.SENTRY_DSN,
   },
+  env: {
+    REACT_APP_HOST_URL: process.env.REACT_APP_HOST_URL,
+  },
 }
 
 // eslint-disable-next-line no-undef

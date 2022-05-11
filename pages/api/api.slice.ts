@@ -17,8 +17,9 @@ import {
   ErrorReportResult,
 } from '../../lib/types/types'
 import { pageConfig } from '../../lib/router/config'
+import nextConfig from '../../next.config'
 
-const baseUrl = process.env.REACT_APP_HOST_URL
+const baseUrl = nextConfig.env.REACT_APP_HOST_URL
 
 const METHOD_TYPE = 'POST'
 
