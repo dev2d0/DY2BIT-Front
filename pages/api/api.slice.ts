@@ -19,7 +19,7 @@ import {
 } from '../../lib/types/types'
 import { pageConfig } from '../../lib/router/config'
 
-const baseUrl = getRuntimeConfig().HOST
+const baseUrl = process.env.HOST_URL
 
 const METHOD_TYPE = 'POST'
 
