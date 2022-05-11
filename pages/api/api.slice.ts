@@ -19,7 +19,7 @@ import {
 } from '../../lib/types/types'
 import { pageConfig } from '../../lib/router/config'
 
-const baseUrl = process.env.HOST_URL
+const baseUrl = process.env.REACT_APP_HOST_URL
 
 const METHOD_TYPE = 'POST'
 
