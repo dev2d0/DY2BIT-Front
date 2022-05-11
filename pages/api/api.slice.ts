@@ -2,7 +2,6 @@ import Cookies from 'js-cookie'
 import { BaseQueryFn, createApi, FetchArgs, fetchBaseQuery, FetchBaseQueryError } from '@reduxjs/toolkit/query/react'
 import router from 'next/router'
 import { ACCESS_TOKEN_KEY } from './contants'
-import { getRuntimeConfig } from '../../lib/utils/runtimeConfig'
 import {
   CreateReservationOrderParams,
   CurrentCoinPricesResult,
