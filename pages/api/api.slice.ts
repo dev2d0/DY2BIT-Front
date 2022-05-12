@@ -18,7 +18,7 @@ import {
 } from '../../lib/types/types'
 import { pageConfig } from '../../lib/router/config'
 
-const baseUrl = process.env.BASE_URL
+const baseUrl = 'https://dy2bit-1603609200.ap-northeast-2.elb.amazonaws.com/'
 
 const METHOD_TYPE = 'POST'
 
