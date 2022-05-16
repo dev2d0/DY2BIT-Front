@@ -61,11 +61,27 @@ const ReservationOrderListWrapper = styled.div`
     padding: 7px;
     font-size: 0.775rem;
   }
+  .css-1rp5ql8.MuiTableCell-head {
+    padding: 7px;
+    font-size: 0.775rem;
+  }
+  .css-10jfj2g.MuiTableCell-head {
+    padding: 7px;
+    font-size: 0.775rem;
+  }
   .css-yvtl07-MuiTableCell-root.MuiTableCell-body {
     padding: 7px;
     font-size: 0.775rem;
   }
   .css-15gzbgv-MuiTableCell-root.MuiTableCell-body {
+    padding: 7px;
+    font-size: 0.775rem;
+  }
+  .css-1c7m334.MuiTableCell-body {
+    padding: 7px;
+    font-size: 0.775rem;
+  }
+  .css-132l2wk.MuiTableCell-body {
     padding: 7px;
     font-size: 0.775rem;
   }
