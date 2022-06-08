@@ -99,7 +99,13 @@ export default function UserAccountList() {
               <StyledTableCell align="right">{`${
                 data
                   ? Math.round(
-                      data.upbitBuyAccountKRW + (data.binanceBuyAccountUSDT as number) * exchangeRatePrice
+                      data.upbitBuyAccountKRW +
+                        (data.binanceBuyAccountUSDT as number) * exchangeRatePrice +
+                        (data.upbitSellAccountBTC as number) * upbitPrice +
+                        Math.abs(
+                          ((data.binanceSellAccountBTC as number) * exchangeRatePrice * binancePrice) /
+                            data.binanceLeverage
+                        )
                     ).toLocaleString('ko-KR')
                   : '###'
               }원`}</StyledTableCell>
