@@ -8,11 +8,17 @@ import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
 import { useSelector } from 'react-redux'
 import { apiSlice } from '../../api/api.slice'
-import { selectExchangeRatePriceState } from '../../../store/modules/current-price.slice'
+import {
+  selectBinancePriceState,
+  selectExchangeRatePriceState,
+  selectUpbitPriceState,
+} from '../../../store/modules/current-price.slice'
 
 export default function UserAccountList() {
   const { data, error, isLoading } = apiSlice.useGetUserAccountQuery({})
   const exchangeRatePrice = useSelector(selectExchangeRatePriceState)
+  const upbitPrice = useSelector(selectUpbitPriceState)
+  const binancePrice = useSelector(selectBinancePriceState)
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -54,7 +60,12 @@ export default function UserAccountList() {
               <StyledTableCell align="right">{`${
                 data ? Math.round(data?.upbitBuyAccountKRW).toLocaleString('ko-KR') : '###'
               }원`}</StyledTableCell>
-              <StyledTableCell align="right">{`${data?.upbitSellAccountBTC ?? '###'}BTC`}</StyledTableCell>
+              <StyledTableCell align="right">
+                {`${data?.upbitSellAccountBTC ?? '###'}BTC`}
+                <WonDescription>{`(${
+                  data ? Math.round((data.upbitSellAccountBTC as number) * upbitPrice).toLocaleString('ko-KR') : '###'
+                }원)`}</WonDescription>
+              </StyledTableCell>
             </StyledTableRow>
             <StyledTableRow>
               <StyledTableCell align="center" component="th" scope="row">
@@ -62,15 +73,44 @@ export default function UserAccountList() {
               </StyledTableCell>
               <StyledTableCell align="right">
                 {`${data ? Math.round(data?.binanceBuyAccountUSDT).toLocaleString('ko-KR') : '###'}$`}
-                <UsdtToWonDescription>{`(${
+                <WonDescription>{`(${
                   data
                     ? Math.round(
                         (data?.binanceBuyAccountUSDT as number) * exchangeRatePrice * (data?.binanceLeverage as number)
                       ).toLocaleString('ko-KR')
                     : '###'
-                }원)`}</UsdtToWonDescription>
+                }원)`}</WonDescription>
               </StyledTableCell>
-              <StyledTableCell align="right">{`${data?.binanceSellAccountBTC ?? '###'}BTC`}</StyledTableCell>
+              <StyledTableCell align="right">
+                {`${data?.binanceSellAccountBTC ?? '###'}BTC`}
+                <WonDescription>{`(${
+                  data
+                    ? Math.round(
+                        (data.binanceSellAccountBTC as number) * exchangeRatePrice * binancePrice
+                      ).toLocaleString('ko-KR')
+                    : '###'
+                }원)`}</WonDescription>
+              </StyledTableCell>
+            </StyledTableRow>
+            <StyledTableRow>
+              <StyledTableCell align="center" component="th" scope="row">
+                합산 금액
+              </StyledTableCell>
+              <StyledTableCell align="right">{`${
+                data
+                  ? Math.round(
+                      data.upbitBuyAccountKRW + (data.binanceBuyAccountUSDT as number) * exchangeRatePrice
+                    ).toLocaleString('ko-KR')
+                  : '###'
+              }원`}</StyledTableCell>
+              <StyledTableCell align="right">{`${
+                data
+                  ? Math.round(
+                      (data.upbitSellAccountBTC as number) * upbitPrice +
+                        (data.binanceSellAccountBTC as number) * exchangeRatePrice * binancePrice
+                    ).toLocaleString('ko-KR')
+                  : '###'
+              }원`}</StyledTableCell>
             </StyledTableRow>
           </TableBody>
         </Table>
@@ -117,6 +157,6 @@ const UserAccountListListWrapper = styled.div`
   }
 `
 
-const UsdtToWonDescription = styled.span`
-  font-size: 5px;
+const WonDescription = styled.span`
+  font-size: 6px;
 `
