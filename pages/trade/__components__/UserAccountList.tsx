@@ -60,12 +60,7 @@ export default function UserAccountList() {
               <StyledTableCell align="right">{`${
                 data ? Math.round(data?.upbitBuyAccountKRW).toLocaleString('ko-KR') : '###'
               }원`}</StyledTableCell>
-              <StyledTableCell align="right">
-                {`${data?.upbitSellAccountBTC ?? '###'}BTC`}
-                <WonDescription>{`(${
-                  data ? Math.round((data.upbitSellAccountBTC as number) * upbitPrice).toLocaleString('ko-KR') : '###'
-                }원)`}</WonDescription>
-              </StyledTableCell>
+              <StyledTableCell align="right">{`${data?.upbitSellAccountBTC ?? '###'}BTC`}</StyledTableCell>
             </StyledTableRow>
             <StyledTableRow>
               <StyledTableCell align="center" component="th" scope="row">
@@ -81,20 +76,11 @@ export default function UserAccountList() {
                     : '###'
                 }원)`}</WonDescription>
               </StyledTableCell>
-              <StyledTableCell align="right">
-                {`${data?.binanceSellAccountBTC ?? '###'}BTC`}
-                <WonDescription>{`(${
-                  data
-                    ? Math.round(
-                        (data.binanceSellAccountBTC as number) * exchangeRatePrice * binancePrice
-                      ).toLocaleString('ko-KR')
-                    : '###'
-                }원)`}</WonDescription>
-              </StyledTableCell>
+              <StyledTableCell align="right">{`${data?.binanceSellAccountBTC ?? '###'}BTC`}</StyledTableCell>
             </StyledTableRow>
             <StyledTableRow>
               <StyledTableCell align="center" component="th" scope="row">
-                합산 금액
+                계좌
               </StyledTableCell>
               <StyledTableCell align="right">{`${
                 data
