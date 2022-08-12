@@ -18,9 +18,13 @@ import {
 } from '../../lib/types/types'
 import { pageConfig } from '../../lib/router/config'
 
-const baseUrl = 'https://dy2bit.ga/'
+// const baseUrl = 'https://dy2bit.ga/'
+const baseUrl = 'http://localhost:8080/'
 
-const METHOD_TYPE = 'POST'
+const POST_TYPE = 'POST'
+const GET_TYPE = 'GET'
+const PUT_TYPE = 'PUT'
+const DELETE_TYPE = 'DELETE'
 
 const baseQuery = fetchBaseQuery({
   baseUrl,
@@ -68,7 +72,7 @@ export const apiSlice = createApi({
           return {
             body,
             url: `/login`,
-            method: METHOD_TYPE,
+            method: POST_TYPE,
           }
         },
         transformResponse(response: any, meta) {
@@ -84,7 +88,7 @@ export const apiSlice = createApi({
           return {
             body,
             url: `/logout`,
-            method: METHOD_TYPE,
+            method: POST_TYPE,
           }
         },
         transformResponse: (response: any, meta: any) => {
@@ -93,32 +97,28 @@ export const apiSlice = createApi({
           return false
         },
       }),
-      getReservationOrderList: builder.query<getReservationOrderListResult[], any>({
-        query(body) {
+      getReservationOrderList: builder.query<getReservationOrderListResult[], void>({
+        query() {
           return {
-            body,
-            method: METHOD_TYPE,
-            url: `api/reservationOrders/getReservationOrderList`,
+            method: GET_TYPE,
+            url: `api/reservation-orders/list`,
           }
         },
-        transformResponse: (response: any) => response,
       }),
-      getCurrentCoinPrices: builder.query<CurrentCoinPricesResult, any>({
-        query(body) {
+      getCurrentCoinPrices: builder.query<CurrentCoinPricesResult, void>({
+        query() {
           return {
-            body,
-            method: METHOD_TYPE,
-            url: `api/reservationOrders/currentCoinPrices`,
+            method: GET_TYPE,
+            url: `api/reservation-orders/current-coin-prices`,
           }
         },
         transformResponse: (response: CurrentCoinPricesResult) => response,
       }),
-      getUserAccount: builder.query<UserAccountResults, any>({
-        query(body) {
+      getUserAccount: builder.query<UserAccountResults, void>({
+        query() {
           return {
-            body,
-            method: METHOD_TYPE,
-            url: `api/reservationOrders/getUserAccount`,
+            method: GET_TYPE,
+            url: `api/reservation-orders/user-account`,
           }
         },
         transformResponse: (response: UserAccountResults) => response,
@@ -127,8 +127,8 @@ export const apiSlice = createApi({
         query(body) {
           return {
             body,
-            method: METHOD_TYPE,
-            url: `api/reservationOrders/createReservationOrder`,
+            method: POST_TYPE,
+            url: `api/reservation-orders`,
           }
         },
         transformResponse({ result }, meta) {
@@ -138,8 +138,8 @@ export const apiSlice = createApi({
       updateReservationOrder: builder.query<string, UpdateReservationOrderParams>({
         query: body => ({
           body,
-          method: METHOD_TYPE,
-          url: `api/reservationOrders/updateReservationOrder`,
+          method: PUT_TYPE,
+          url: `api/reservation-orders`,
         }),
         transformResponse({ result }, meta) {
           return result
@@ -148,19 +148,18 @@ export const apiSlice = createApi({
       deleteReservationOrder: builder.query<string, DeleteReservationOrderParams>({
         query: body => ({
           body,
-          method: METHOD_TYPE,
-          url: `api/reservationOrders/deleteReservationOrder`,
+          method: DELETE_TYPE,
+          url: `api/reservation-orders`,
         }),
         transformResponse({ result }, meta) {
           return result
         },
       }),
-      getHistoryReservationOrderList: builder.query<getHistoryReservationOrderListResult[], any>({
-        query(body) {
+      getHistoryReservationOrderList: builder.query<getHistoryReservationOrderListResult[], void>({
+        query() {
           return {
-            body,
-            method: METHOD_TYPE,
-            url: `api/reservationOrders/getHistoryReservationOrderList`,
+            method: GET_TYPE,
+            url: `api/reservation-orders/histories`,
           }
         },
         transformResponse: (response: any) => response,
@@ -169,30 +168,28 @@ export const apiSlice = createApi({
         query(body) {
           return {
             body,
-            method: METHOD_TYPE,
-            url: `api/reservationOrders/deleteHistoryReservationOrder`,
+            method: DELETE_TYPE,
+            url: `api/reservation-orders/histories`,
           }
         },
         transformResponse({ result }, meta) {
           return result
         },
       }),
-      getDailyKimpList: builder.query<getDailyKimpListResult[], any>({
-        query(body) {
+      getDailyKimpList: builder.query<getDailyKimpListResult[], void>({
+        query() {
           return {
-            body,
-            method: METHOD_TYPE,
-            url: `api/reservationOrders/getDailyKimpList`,
+            method: GET_TYPE,
+            url: `api/reservation-orders/daily-kimp-list`,
           }
         },
         transformResponse: (response: any) => response,
       }),
-      getErrorReport: builder.query<ErrorReportResult, any>({
-        query(body) {
+      getErrorReport: builder.query<ErrorReportResult, void>({
+        query() {
           return {
-            body,
-            method: METHOD_TYPE,
-            url: `api/reservationOrders/getErrorReport`,
+            method: GET_TYPE,
+            url: `api/reservation-orders/error-report`,
           }
         },
         transformResponse: (response: ErrorReportResult) => response,
@@ -201,8 +198,8 @@ export const apiSlice = createApi({
         query(body) {
           return {
             body,
-            method: METHOD_TYPE,
-            url: `api/reservationOrders/confirmErrorReport`,
+            method: POST_TYPE,
+            url: `api/reservation-orders/confirm-error-report`,
           }
         },
         transformResponse: (response: ErrorReportResult) => response,
